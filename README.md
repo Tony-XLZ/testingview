@@ -7,8 +7,7 @@
 The report is divided into two parts:
 1. **Documentation**: Detailed guidance on usage, framework objects, and maintenance.
 2. **Reflective Account**: Reflections on the development process, challenges encountered, and lessons learned.
-
-Install commands for required packages are included in the appendix.
+3. **Appendix**: Install commands for required packages are included in the appendix.
 
 ## Quickstart Example
 
