@@ -128,6 +128,8 @@ if __name__ == '__main__':
 ```
 
 The logic is straightforward: go long when MACD crosses above the signal line, and go short when it crosses below.
+![image](https://github.com/user-attachments/assets/481e151a-3a7c-4fb0-a503-4930a705bf38)
+
 
 ### Dual Thrust Strategy Example
 
@@ -182,6 +184,8 @@ if __name__ == '__main__':
 ```
 
 The Dual Thrust strategy uses upper and lower bounds calculated from recent price movements to determine entry and exit points. The strategy goes long when the closing price crosses above the upper bound, offsets the position when the price crosses back below, and goes short when the price crosses below the lower bound.
+![image](https://github.com/user-attachments/assets/02ff96b1-377c-490b-85b3-9a318cb7793d)
+
 
 ## Reflective Account
 
