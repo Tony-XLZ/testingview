@@ -1,0 +1,63 @@
+{
+    "id": 40311538,
+    "name": "Zhenxun Wu",
+    "proposal": "The project will use object-oriented programming to build a lightweight, event-driven backtesting framework for quantitative finance.",
+    "tasks": [
+        {
+            "task": "create draft",
+            "description": "backtest an example data with basic functions to draft the structure",
+            "est_hours": "70",
+            "est_completion": "28/11/2022",
+            "act_hours": "10",
+            "act_completion": "25/11/2022"
+        },
+        {
+            "task": "add_data module encapsulation",
+            "description": "create classes to transfer and normalize the data input to a specific data type",
+            "est_hours": "20",
+            "est_completion": "02/12/2022",
+            "act_hours": "15",
+            "act_completion": "30/11/2022"
+        },
+        {
+            "task": "strategy module encapsulation",
+            "description": "create classes to transfer the trading strategy input into an object",
+            "est_hours": "30",
+            "est_completion": "05/12/2022",
+            "act_hours": "25",
+            "act_completion": "03/12/2022"
+        },
+        {
+            "task": "data visualisation encapsulation",
+            "description": "create classes to bundle various visualisation methods into one unit",
+            "est_hours": "20",
+            "est_completion": "08/12/2022",
+            "act_hours": "25",
+            "act_completion": "08/12/2022"
+        },
+        {
+            "task": "strategy analysers encapsulation",
+            "description": "create classes to bundle various analysers into one unit",
+            "est_hours": "10",
+            "est_completion": "11/12/2022",
+            "act_hours": "5",
+            "act_completion": "09/12/2022"
+        },
+        {
+            "task": "debugging",
+            "description": "debug the modules",
+            "est_hours": "10",
+            "est_completion": "13/12/2022",
+            "act_hours": "40",
+            "act_completion": "13/12/2022"
+        },
+        {
+            "task": "write documentation",
+            "description": "write introduction, tutorials and examples",
+            "est_hours": "20",
+            "est_completion": "16/12/2022",
+            "act_hours": "15",
+            "act_completion": "16/12/2022"
+        }
+    ]
+}
