@@ -82,25 +82,107 @@ The framework runs by default with $50,000 starting capital, 0% broker commissio
 
 ## Advanced Tutorials
 
-Examples include:
-1. **MACD Strategy**: Uses MACD and signal lines to generate trading signals.
-2. **Dual Thrust Strategy**: A famous trend-following strategy developed by Michael Chale.
-
 ### MACD Example
+
 ```python
+from testingview import StrategyBase, BacktestRun
+def yahoo_data
+import numpy as np
+
 class MACD(StrategyBase):
     @staticmethod
     def macd(_df):
-        return _df.ewm(span=12).mean() - _df.ewm(span=26).mean()
+        k = _df.ewm(span=12, adjust=False, min_periods=12).mean()
+        d = _df.ewm(span=26, adjust=False, min_periods=26).mean()
+        return k - d
+
+    @staticmethod
+    def macd_s(_df):
+        k = _df.ewm(span=12, adjust=False, min_periods=12).mean()
+        d = _df.ewm(span=26, adjust=False, min_periods=26).mean()
+        s = (k - d).ewm(span=9, adjust=False, min_periods=9).mean()
+        return s
 
     def set_indicators(self):
         self.MACD = self.ind(self.macd, self.data.close)
+        self.MACDsignal = self.ind(self.macd_s, self.data.close)
 
     def next(self):
         if self.crossover(self.MACD, self.MACDsignal):
             return self.long()
+        elif self.crossover(self.MACDsignal, self.MACD):
+            return self.short()
+
+if __name__ == '__main__':
+    # Prepare the data
+    yh = yahoo_data(name="goog").loc['20210101':'20211231']
+
+    # Instantiate the strategy
+    MACD_run = BacktestRun(MACD(yh))
+
+    # Run and plot
+    result = MACD_run.run()
+    MACD_run.plot(title="GOOG MACD Strategy")
+
+    # Print results
+    print(result)
 ```
+
 The logic is straightforward: go long when MACD crosses above the signal line, and go short when it crosses below.
+
+### Dual Thrust Strategy Example
+
+```python
+from testingview import StrategyBase, BacktestRun
+from testingview import crypto_data
+import numpy as np
+
+class DualThrust(StrategyBase):
+    @staticmethod
+    def upper_bound(_df):
+        hh = _df.high.rolling(window=3).max()
+        hc = _df.close.rolling(window=3).max()
+        lc = _df.close.rolling(window=3).min()
+        ll = _df.low.rolling(window=3).min()
+        return _df.open + 0.5 * np.maximum(hh - lc, hc - ll)
+
+    @staticmethod
+    def lower_bound(_df):
+        hh = _df.high.rolling(window=3).max()
+        hc = _df.close.rolling(window=3).max()
+        lc = _df.close.rolling(window=3).min()
+        ll = _df.low.rolling(window=3).min()
+        return _df.open - 0.3 * np.maximum(hh - lc, hc - ll)
+
+    def set_indicators(self):
+        self.D_T_U = self.ind(self.upper_bound, self.data)
+        self.D_T_L = self.ind(self.lower_bound, self.data)
+        self.Close = self.ind(lambda x: x.close, self.data)
+
+    def next(self):
+        if self.crossover(self.Close, self.D_T_U):
+            return self.long()
+        elif self.crossover(self.D_T_U, self.Close):
+            return self.offset()
+        elif self.crossover(self.D_T_L, self.Close):
+            return self.short()
+
+if __name__ == '__main__':
+    # Prepare the data
+    hb = crypto_data(name="ethusdt").loc['20220903':'20221213']
+
+    # Instantiate the strategy
+    DT_run = BacktestRun(DualThrust(hb))
+
+    # Run and plot
+    result = DT_run.run(cash=500000, size=10, comm=0.0003, amount=1)
+    DT_run.plot(title="ETHUSDT Dual-Thrust Strategy")
+
+    # Print results
+    print(result)
+```
+
+The Dual Thrust strategy uses upper and lower bounds calculated from recent price movements to determine entry and exit points. The strategy goes long when the closing price crosses above the upper bound, offsets the position when the price crosses back below, and goes short when the price crosses below the lower bound.
 
 ## Reflective Account
 
