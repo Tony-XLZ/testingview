@@ -1,4 +1,4 @@
-# README: Python for Finance - Backtesting Framework "testingview"
+# Python for Finance - Backtesting Framework "testingview"
 
 ## Introduction
 
