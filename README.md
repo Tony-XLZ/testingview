@@ -4,7 +4,7 @@
 
 "testingview" is a lightweight, event-driven backtesting framework built with object-oriented programming for quantitative finance. It enables users to evaluate the profitability of various trading strategies by simulating their performance over historical data. The framework provides an effective way to test strategies in a wide range of market conditions, recognizing that while past performance is not a guarantee of future results, well-tested strategies can offer valuable insights.
 
-The report is divided into two parts:
+The document is divided into three parts:
 1. **Documentation**: Detailed guidance on usage, framework objects, and maintenance.
 2. **Reflective Account**: Reflections on the development process, challenges encountered, and lessons learned.
 3. **Appendix**: Install commands for required packages are included in the appendix.
