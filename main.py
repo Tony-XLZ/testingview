@@ -1,5 +1,5 @@
 # This is a collection of 'simple_example.py' and 'advanced_examples.py'
-# Interpretation of strategies and results are within the pdf documentation
+# Interpretation of strategies and results are within README
 from testingview import StrategyBase, BacktestRun
 from testingview import yahoo_data, crypto_data
 
