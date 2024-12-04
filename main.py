@@ -7,7 +7,6 @@ import numpy as np
 import talib as ta
 
 
-
 class SMA(StrategyBase):
 
     def set_indicators(self):
