@@ -192,7 +192,7 @@ class BacktestRun:
         # https://github.com/matplotlib/mplfinance/issues/181#issuecomment-1068141054
         # Here we create legends for 'long', 'short' and 'offset'.
         ax[0].legend([None] * (len(ap) + 2))
-        handles = ax[0].get_legend().legendHandles
+        handles = ax[0].get_legend().legend_handles
         ax[0].legend(handles=handles[2:], labels=list(ap.keys()))
 
         # Show the plot
